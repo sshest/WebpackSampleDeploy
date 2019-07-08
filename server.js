@@ -3,6 +3,9 @@ const path = require('path');
 
 const app = express();
 
+//API server routes
+app.get('/hello', (req, res) => res.send({hi: 'there'}));
+
 if (process.env.NODE_ENV !== 'production') {
     const webpackMiddleware = require('webpack-dev-middleware');
     const webpack = require('webpack');
@@ -15,7 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
     })
 }
 
-app.listen(3050, () => {
+app.listen(process.env.PORT || 3050, () => {
     console.log('Listening on 3050 port');
 });
 
